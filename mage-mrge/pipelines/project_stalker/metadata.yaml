@@ -2,7 +2,10 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - count_hits_by_company
+  - count_hits_by_department
+  - summary_overview_for_load_epic_jobs
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -33,6 +36,80 @@ run_pipeline_in_one_process: false
 spark_config: {}
 tags: []
 type: python
-updated_at: '2023-11-19 20:55:46'
+updated_at: '2023-11-19 21:11:01'
 uuid: project_stalker
-widgets: []
+widgets:
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    chart_style: vertical
+    chart_type: bar chart
+    group_by:
+    - company
+    metrics:
+    - aggregation: count_distinct
+      column: absolute_url
+    width_percentage: '1'
+    x: x
+    y: y
+    y_sort_order: descending
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Count hits by company
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - load_epic_jobs
+  uuid: count_hits_by_company
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    chart_style: horizontal
+    chart_type: bar chart
+    group_by:
+    - department
+    metrics:
+    - aggregation: count_distinct
+      column: absolute_url
+    x: x
+    y: y
+    y_sort_order: descending
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Count hits by department
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - load_epic_jobs
+  uuid: count_hits_by_department
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    chart_type: table
+    height: 3000
+    index: stats
+    x: headers
+    y: rows
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: summary overview for load_epic_jobs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - load_epic_jobs
+  uuid: summary_overview_for_load_epic_jobs
