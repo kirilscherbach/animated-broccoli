@@ -1,4 +1,5 @@
 import math
+from datetime import datetime
 
 import pandas as pd
 import requests
@@ -64,6 +65,7 @@ def load_data_from_api(*args, **kwargs):
                 "filterText": rd_position.get("filterText", "N/A"),
                 "updated_at": rd_position.get("updated_at", "2000-01-01 00:00:00"),
                 "full_response": r_position.text,
+                "insert_ts": datetime.now().isoformat(),
             }
             ds.append(data_dict)
             skip += 1

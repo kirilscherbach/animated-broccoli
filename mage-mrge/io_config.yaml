@@ -74,11 +74,11 @@ default:
   PINOT_USER: user
   # PostgresSQL
   POSTGRES_CONNECT_TIMEOUT: 10
-  POSTGRES_DBNAME: postgres
+  POSTGRES_DBNAME: scraper_db
   POSTGRES_SCHEMA: public # Optional
-  POSTGRES_USER: username
-  POSTGRES_PASSWORD: password
-  POSTGRES_HOST: hostname
+  POSTGRES_USER: scraper
+  POSTGRES_PASSWORD: "{{ env_var('SCRAPER_PG_PASSWORD') }}"
+  POSTGRES_HOST: host.docker.internal
   POSTGRES_PORT: 5432
   # Redshift
   REDSHIFT_SCHEMA: public # Optional
