@@ -174,3 +174,4 @@ logs/
 mage-ai.db
 mage_data/
 secrets/
+.python-version
