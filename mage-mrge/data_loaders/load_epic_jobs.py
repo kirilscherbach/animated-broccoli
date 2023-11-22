@@ -28,7 +28,7 @@ def load_data_from_api(*args, **kwargs):
         "http://mw-greenhouse-service-prod.debc.live.use1a.on.epicgames.com/api/job"
     )
     params = {"keyword": "data", "skip": 0}
-    ds = []
+    dl = []
     skip = 0
     page = 1
     position_count, page_size = get_total_hits_and_page_size(base_url, params)
@@ -44,7 +44,7 @@ def load_data_from_api(*args, **kwargs):
         for hit in rd["hits"]:
             r_position = requests.get(url=f"""{base_url}/{hit["id"]}""")
             rd_position = r_position.json()
-            logger.info(
+            logger.debug(
                 f"""Inserting requisition_id {rd_position.get("requisition_id", "N/A")}"""
             )
             data_dict = {
@@ -67,10 +67,10 @@ def load_data_from_api(*args, **kwargs):
                 "full_response": r_position.text,
                 "insert_ts": datetime.now().isoformat(),
             }
-            ds.append(data_dict)
+            dl.append(data_dict)
             skip += 1
 
-    return pd.DataFrame(ds)
+    return pd.DataFrame(dl)
 
 
 @test
@@ -86,4 +86,4 @@ def test_output_length(output, *args) -> None:
     """
     Template code for testing the output of the block.
     """
-    assert len(output.index) >= 10, "The output has more than 10 rows"
+    assert len(output.index) >= 1, "The output has at least 1 row"

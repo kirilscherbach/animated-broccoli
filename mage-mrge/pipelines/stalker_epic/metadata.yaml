@@ -13,12 +13,12 @@ blocks:
   language: python
   name: load_epic_jobs
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_epic_jobs
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
@@ -44,19 +44,20 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: project stalker
+name: stalker-epic
 notification_config: {}
 retry_config:
   delay: 10
   retries: 3
 run_pipeline_in_one_process: false
 spark_config: {}
-tags: []
+tags:
+- project stalker
 type: python
-updated_at: '2023-11-19 22:15:49'
-uuid: project_stalker
+updated_at: '2023-11-22 09:02:01'
+uuid: stalker_epic
 widgets:
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     chart_style: vertical
@@ -83,7 +84,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_company
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     chart_style: horizontal
@@ -109,7 +110,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_department
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     chart_type: table
