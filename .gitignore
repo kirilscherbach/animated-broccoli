@@ -176,5 +176,8 @@ mage_data/
 secrets/
 .python-version
 
+#dbt
+mage-mrge/dbt/animated-broccoli-dbt/.user.yml
+
 #vscode
 .vscode/
