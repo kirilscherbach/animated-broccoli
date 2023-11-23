@@ -10,4 +10,4 @@
   )
 }}
 
-{{ calculate_daily_job_update('jobs_epic_daily') }}
+{{ calculate_daily_job_update('jobs_epic_clean') }}
