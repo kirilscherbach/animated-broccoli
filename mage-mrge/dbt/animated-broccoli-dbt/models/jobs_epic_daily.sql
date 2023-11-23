@@ -21,7 +21,7 @@ select
     , updated_at
     , insert_ts
     , insert_date
-    , internal_job_id || requisition_id as job_id
+    , requisition_id as job_id
     , city || ', ' || state || ', ' || country as job_location
 from
     (
@@ -40,8 +40,8 @@ from
             , updated_at
             , insert_ts
             , insert_ts::date as insert_date
-            , concat(internal_job_id, '-', requisition_id, '-', insert_ts::date) as daily_job_id
-            , row_number() over (partition by concat(internal_job_id, '-', requisition_id, '-', insert_ts::date) order by insert_ts desc) as rn
+            , concat(requisition_id, '-', insert_ts::date) as daily_job_id
+            , row_number() over (partition by concat(requisition_id, '-', insert_ts::date) order by insert_ts desc) as rn
         from {{ source('scraper_results', 'jobs_epic') }}
         {% if is_incremental() %}
         -- this filter will only be applied on an incremental run
