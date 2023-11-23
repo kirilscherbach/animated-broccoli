@@ -1,0 +1,42 @@
+{
+  "dbt.enableNewLineagePanel": true,
+  "sqlfluff.config": "${workspaceFolder}/mage-mrge/dbt/animated-broccoli-dbt/.sqlfluff",
+  "sqlfluff.dialect": "postgres",
+  "sqlfluff.env.environmentVariables": [
+    {
+      "key": "example_key",
+      "value": "example_value"
+    }
+  ],
+  "sqlfluff.env.customDotEnvFiles": [
+    "${workspaceFolder}/example.env"
+  ],
+  "sqlfluff.env.useDotEnvFile": true,
+  "sqlfluff.excludeRules": [
+    "L009",
+    "LT04",
+    "LT05"
+  ],
+  "sqlfluff.executablePath": "sqlfluff",
+  "sqlfluff.ignoreLocalConfig": false,
+  "sqlfluff.ignoreParsing": false,
+  "sqlfluff.rules": [],
+  "sqlfluff.suppressNotifications": false,
+  "sqlfluff.workingDirectory": "",
+  "sqlfluff.linter.arguments": [],
+  "sqlfluff.linter.diagnosticSeverity": "error",
+  "sqlfluff.linter.diagnosticSeverityByRule": [
+    {
+      "rule": "L010",
+      "severity": "warning"
+    }
+  ],
+  "sqlfluff.linter.lintEntireProject": true,
+  "sqlfluff.format.arguments": [
+    "--FIX-EVEN-UNPARSABLE"
+  ],
+  "sqlfluff.format.enabled": true,
+  "sqlfluff.linter.run": "onSave",
+  "sqlfluff.experimental.format.executeInTerminal": true,
+  "editor.formatOnSave": false
+}
