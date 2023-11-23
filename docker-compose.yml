@@ -13,6 +13,7 @@ services:
       ENV: ${ENV}
       DBT_PG_PASSWORD: ${DBT_PG_PASSWORD}
       SCRAPER_PG_PASSWORD: ${SCRAPER_PG_PASSWORD}
+      GH_TOKEN: ${GH_TOKEN}
     ports:
       - 6789:6789
     volumes:
