@@ -1,16 +1,29 @@
 {% macro calculate_daily_job_update(table_name) %}
 
 
-with filtered_dataset as (select * from
-(select
+with filtered_dataset as
+(
+    select
         *
         , dense_rank() over (order by insert_date desc) as position
     from {{ ref(table_name) }}
     where
-    insert_date between '{{ var("execution_date", "2023-11-02") }}'::date - 7
-                    and '{{ var("execution_date", "2023-11-02") }}'::date
-)
-where position <= 2
+    insert_date between '{{ var("execution_date", "2023-11-09") }}'::date - 7
+                    and '{{ var("execution_date", "2023-11-09") }}'::date
+),
+
+today as
+(
+    select * from
+    filtered_dataset
+    where position = 1
+),
+
+yesterday as
+(
+    select * from
+    filtered_dataset
+    where position = 2
 )
 
 /*
@@ -22,7 +35,7 @@ insert_date position    insert_date position
 */
 
 select
-  coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-02") }}' update_job_id
+  coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-09") }}' update_job_id
   , case
         when today.job_id is null then 'Position closed'
         when yesterday.job_id is null then 'Position opened'
@@ -35,9 +48,9 @@ select
 , coalesce(today.company , yesterday.company ) as company
 , coalesce(today.remote , yesterday.remote ) as remote
 , coalesce(today.job_location , yesterday.job_location ) as job_location
-, '{{ var("execution_date", "2023-11-02") }}'::date as insert_date
+, '{{ var("execution_date", "2023-11-09") }}'::date as insert_date
 from
-filtered_dataset as today full outer join filtered_dataset as yesterday
+today full outer join yesterday
 on today.job_id = yesterday.job_id
 and today.position = (yesterday.position-1)
 where today.job_id is null or yesterday.job_id is null

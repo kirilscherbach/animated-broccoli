@@ -1,9 +1,22 @@
-broccoli-dev:
+broccoli-mage:
   target: dev
   outputs:
     dev:
       type: postgres
       host: host.docker.internal
+      user: dbt_user
+      password: "{{ env_var('DBT_PG_PASSWORD') }}"
+      port: 5432
+      dbname: scraper_db
+      schema: public
+      connect_timeout: 10
+
+broccoli-local:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
       user: dbt_user
       password: "{{ env_var('DBT_PG_PASSWORD') }}"
       port: 5432

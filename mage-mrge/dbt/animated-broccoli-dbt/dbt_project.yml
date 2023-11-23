@@ -4,7 +4,7 @@ name: broccoli
 
 config-version: 2
 
-profile: broccoli-dev
+profile: broccoli-mage
 
 model-paths: ["models"]
 docs-paths: ["docs"]

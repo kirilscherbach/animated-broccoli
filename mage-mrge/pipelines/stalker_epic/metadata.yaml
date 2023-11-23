@@ -21,7 +21,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - animated_broccoli_dbt/models/jobs_epic_clean
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -34,6 +35,41 @@ blocks:
   upstream_blocks:
   - load_epic_jobs
   uuid: export_to_postgres
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: animated-broccoli-dbt/models/jobs_daily_update_epic.sql
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: animated_broccoli_dbt/models/jobs_daily_update_epic
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - animated_broccoli_dbt/models/jobs_epic_clean
+  uuid: animated_broccoli_dbt/models/jobs_daily_update_epic
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: animated-broccoli-dbt/models/jobs_epic_clean.sql
+  downstream_blocks:
+  - animated_broccoli_dbt/models/jobs_daily_update_epic
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: animated_broccoli_dbt/models/jobs_epic_clean
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - export_to_postgres
+  uuid: animated_broccoli_dbt/models/jobs_epic_clean
 callbacks: []
 concurrency_config: {}
 conditionals: []
