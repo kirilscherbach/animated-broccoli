@@ -1,0 +1,14 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_animated-broccoli-dbt
+  schema: public
+  tables:
+  - description: Dataframe for block `export_to_postgres` of the `stalker_epic` mage
+      pipeline.
+    identifier: mage_stalker_epic_export_to_postgres
+    meta:
+      block_uuid: export_to_postgres
+      pipeline_uuid: stalker_epic
+    name: stalker_epic_export_to_postgres
+version: 2

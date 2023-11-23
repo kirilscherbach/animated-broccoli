@@ -13,15 +13,16 @@ blocks:
   language: python
   name: load_epic_jobs
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_epic_jobs
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - animated_broccoli_dbt/models/jobs_daily_update_epic
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -34,6 +35,24 @@ blocks:
   upstream_blocks:
   - load_epic_jobs
   uuid: export_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: animated-broccoli-dbt/models/jobs_daily_update_epic.sql
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: animated-broccoli-dbt/models/jobs_daily_update_epic
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - export_to_postgres
+  uuid: animated_broccoli_dbt/models/jobs_daily_update_epic
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -54,10 +73,10 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2023-11-22 09:02:01'
+updated_at: '2023-11-23 10:55:21'
 uuid: stalker_epic
 widgets:
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_style: vertical
@@ -84,7 +103,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_company
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_style: horizontal
@@ -110,7 +129,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_department
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_type: table

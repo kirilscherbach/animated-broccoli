@@ -1,0 +1,15 @@
+version: 1.0.0
+
+name: garbanzo
+
+config-version: 2
+
+profile: garbanzo-ltd
+
+model-paths: ["models"]
+docs-paths: ["docs"]
+
+target-path: target
+log-path: logs
+
+query-comment: "I am a query comment!"

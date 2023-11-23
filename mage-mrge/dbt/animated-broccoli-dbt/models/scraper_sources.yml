@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: scraper_results
+    database: scraper_db
+    schema: public
+    tables:
+      - name: jobs_epic
+      - name: jobs_crytek
