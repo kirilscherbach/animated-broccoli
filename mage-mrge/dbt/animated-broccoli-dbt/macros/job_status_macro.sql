@@ -22,7 +22,8 @@ insert_date position    insert_date position
 */
 
 select
-    case
+  coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-02") }}' update_job_id
+  , case
         when today.job_id is null then 'Position closed'
         when yesterday.job_id is null then 'Position opened'
         else 'No change'
