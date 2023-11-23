@@ -38,5 +38,7 @@
   "sqlfluff.format.enabled": true,
   "sqlfluff.linter.run": "onSave",
   "sqlfluff.experimental.format.executeInTerminal": true,
-  "editor.formatOnSave": false
+  "editor.formatOnSave": false,
+  "dbt.queryLimit": 10,
+  "dbt.queryScale": 1
 }
