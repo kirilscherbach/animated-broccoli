@@ -3,18 +3,19 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - bar_chart_for_broken_sunset_1700820695145
+  - open_positions_by_date_last_7_days
+  - open_positions_by_company_last_30_days
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: broken sunset
+  name: data inspection epic
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: broken_sunset
+  uuid: data_inspection_epic
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -47,7 +48,7 @@ run_pipeline_in_one_process: false
 spark_config: {}
 tags: []
 type: python
-updated_at: '2023-11-24 10:14:59'
+updated_at: '2023-11-24 11:34:08'
 uuid: data_inspection
 widgets:
 - all_upstream_blocks_executed: true
@@ -68,11 +69,37 @@ widgets:
   executor_type: local_python
   has_callback: false
   language: python
-  name: bar chart for broken_sunset 1700820695145
+  name: open_positions_by_date_last_7_days
   retry_config: null
   status: executed
   timeout: null
   type: chart
   upstream_blocks:
-  - broken_sunset
-  uuid: bar_chart_for_broken_sunset_1700820695145
+  - data_inspection_epic
+  uuid: open_positions_by_date_last_7_days
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    chart_style: horizontal
+    chart_type: bar chart
+    group_by:
+    - company
+    metrics:
+    - aggregation: sum
+      column: count_positions
+    x: x
+    y: y
+    y_sort_order: descending
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: open_positions_by_company_last_30_days
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - data_inspection_epic
+  uuid: open_positions_by_company_last_30_days
