@@ -117,3 +117,11 @@ default:
     source: trino-cli                         # Optional
     user: admin
     verify: /path/to/your/ca.crt              # Optional
+reader:
+  POSTGRES_CONNECT_TIMEOUT: 10
+  POSTGRES_DBNAME: scraper_db
+  POSTGRES_SCHEMA: public # Optional
+  POSTGRES_USER: dbt_user
+  POSTGRES_PASSWORD: "{{ env_var('DBT_PG_PASSWORD') }}"
+  POSTGRES_HOST: host.docker.internal
+  POSTGRES_PORT: 5432
