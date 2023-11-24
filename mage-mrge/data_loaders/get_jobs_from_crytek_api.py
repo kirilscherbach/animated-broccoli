@@ -38,9 +38,8 @@ def load_data_from_api(*args, **kwargs):
             "hosted_url": jd.get("hosted_url", "N/A"),
             "apply_url": jd.get("apply_url", "N/A"),
             "commitment": jd.get("commitment", "N/A"),
-            "department": jd.get("department", "N/A"),
-            "job_location": jd.get("location", "N/A"),
             "team": jd.get("team", "N/A"),
+            "job_location": jd.get("location", "N/A"),
             "date_posted": jd.get("date_posted", "2000-01-01"),
             "valid_through": jd.get("valid_through", "2000-01-01"),
             "full_response": j.text,
@@ -56,6 +55,22 @@ def load_data_from_api(*args, **kwargs):
 @test
 def test_output(output, *args) -> None:
     """
-    Template code for testing the output of the block.
+    The output is more than one row
     """
     assert len(output.index) >= 1, "The output has at least 1 row"
+
+
+@test
+def test_output_team_values(output, *args) -> None:
+    """
+    Check if company is in expected list
+    """
+    output_team = output["team"].tolist()
+    output_team_set = set(output_team)
+    expected_team_set = {
+        "Hunt: Showdown",
+        "CRYENGINE",
+        "Crytek",
+        "Crysis 4 (Working Title)",
+    }
+    assert output_team_set == expected_team_set, "The output's team values are expected"

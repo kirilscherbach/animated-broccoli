@@ -74,16 +74,21 @@ def load_data_from_api(*args, **kwargs):
 
 
 @test
-def test_output(output, *args) -> None:
+def test_output_length(output, *args) -> None:
     """
-    Template code for testing the output of the block.
+    Check if output has more than one row
     """
-    assert output is not None, "The output is undefined"
+    assert len(output.index) >= 1, "The output has at least 1 row"
 
 
 @test
-def test_output_length(output, *args) -> None:
+def test_output_company_values(output, *args) -> None:
     """
-    Template code for testing the output of the block.
+    Check if company is in expected list
     """
-    assert len(output.index) >= 1, "The output has at least 1 row"
+    output_companies = output["company"].tolist()
+    output_companies_set = set(output_companies)
+    expected_companies_set = {"Epic Games", "Harmonix", "Psyonix"}
+    assert (
+        output_companies_set == expected_companies_set
+    ), "The output's companies values are expected"

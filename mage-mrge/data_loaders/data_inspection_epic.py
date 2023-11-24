@@ -26,24 +26,9 @@ def load_data_from_postgres(*args, **kwargs):
             department,
             company,
             count(*) as count_positions
-        from
-            (select
-                insert_date,
-                job_status,
-                department,
-                company
-            from
-            jobs_epic_daily_update
-            union all
-            select
-                insert_date,
-                job_status,
-                department,
-                company
-            from
-            jobs_crytek_daily_update)
+        from jobs_epic_daily_update
         where job_status = 'Position opened'
-        and insert_date > '{date_filter}'::date - 30
+        and insert_date > '{date_filter}'::date - 7
         group by
             insert_date,
             job_status,
@@ -51,7 +36,6 @@ def load_data_from_postgres(*args, **kwargs):
             company
         order by
             insert_date asc
-
 
     """
 

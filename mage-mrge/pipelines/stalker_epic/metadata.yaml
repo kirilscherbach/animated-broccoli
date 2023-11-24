@@ -82,7 +82,7 @@ blocks:
   language: python
   name: data_inspection_epic
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks:
@@ -108,7 +108,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2023-11-24 11:15:25'
+updated_at: '2023-11-24 12:48:05'
 uuid: stalker_epic
 widgets:
 - all_upstream_blocks_executed: true
