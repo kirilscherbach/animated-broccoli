@@ -27,7 +27,8 @@ blocks:
       get_jobs_from_crytek_api:
         table_name: public.crytek_jobs
     use_raw_sql: false
-  downstream_blocks: []
+  downstream_blocks:
+  - animated_broccoli_dbt/models/jobs_crytek_clean
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -40,6 +41,42 @@ blocks:
   upstream_blocks:
   - get_jobs_from_crytek_api
   uuid: insert_into_postgres
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: animated-broccoli-dbt/models/jobs_crytek_clean.sql
+  downstream_blocks:
+  - animated_broccoli_dbt/models/jobs_daily_update_crytek
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: animated_broccoli_dbt/models/jobs_crytek_clean
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - insert_into_postgres
+  uuid: animated_broccoli_dbt/models/jobs_crytek_clean
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_path: animated-broccoli-dbt/models/jobs_daily_update_crytek.sql
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: animated-broccoli-dbt/models/jobs_daily_update_crytek
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - animated_broccoli_dbt/models/jobs_crytek_clean
+  uuid: animated_broccoli_dbt/models/jobs_daily_update_crytek
 callbacks: []
 concurrency_config: {}
 conditionals: []

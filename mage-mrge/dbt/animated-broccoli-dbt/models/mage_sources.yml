@@ -11,4 +11,11 @@ sources:
       block_uuid: export_to_postgres
       pipeline_uuid: stalker_epic
     name: stalker_epic_export_to_postgres
+  - description: Dataframe for block `insert_into_postgres` of the `stalker_crytek`
+      mage pipeline.
+    identifier: mage_stalker_crytek_insert_into_postgres
+    meta:
+      block_uuid: insert_into_postgres
+      pipeline_uuid: stalker_crytek
+    name: stalker_crytek_insert_into_postgres
 version: 2
