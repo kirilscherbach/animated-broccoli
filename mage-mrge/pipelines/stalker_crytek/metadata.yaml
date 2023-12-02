@@ -3,45 +3,36 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - insert_into_postgres
+  - export_crytek_data
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: get_jobs_from_crytek_api
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: get_jobs_from_crytek_api
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
-  configuration:
-    data_provider: postgres
-    data_provider_profile: default
-    dbt: {}
-    export_write_policy: append
-    limit: 10
-    upstream_block_configuration:
-      get_jobs_from_crytek_api:
-        table_name: public.crytek_jobs
-    use_raw_sql: false
+  configuration: {}
   downstream_blocks:
   - animated_broccoli_dbt/models/jobs_crytek_clean
   executor_config: null
   executor_type: local_python
   has_callback: false
-  language: sql
-  name: insert_into_postgres
+  language: python
+  name: export crytek data
   retry_config: null
   status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - get_jobs_from_crytek_api
-  uuid: insert_into_postgres
-- all_upstream_blocks_executed: false
+  uuid: export_crytek_data
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_path: animated-broccoli-dbt/models/jobs_crytek_clean.sql
@@ -57,7 +48,7 @@ blocks:
   timeout: null
   type: dbt
   upstream_blocks:
-  - insert_into_postgres
+  - export_crytek_data
   uuid: animated_broccoli_dbt/models/jobs_crytek_clean
 - all_upstream_blocks_executed: false
   color: null
@@ -95,6 +86,6 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2023-11-24 12:57:22'
+updated_at: '2023-12-02 12:26:21'
 uuid: stalker_crytek
 widgets: []
