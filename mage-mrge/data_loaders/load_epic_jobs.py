@@ -36,7 +36,8 @@ def load_data_from_api(*args, **kwargs):
     page_count = math.ceil(position_count / page_size)
     logger.info(f"There are {page_count} total pages")
     for i in range(1, page_count + 1):
-        params = {"keyword": "data", "skip": skip}
+        # params = {"keyword": "data", "skip": skip}
+        params = {}
         logger.info(f"Requesting page {i}")
         r = requests.get(base_url, params)
         logger.info(f"Requested {r.url}")
