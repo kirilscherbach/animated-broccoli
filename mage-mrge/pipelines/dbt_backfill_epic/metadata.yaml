@@ -14,7 +14,7 @@ blocks:
   language: sql
   name: animated-broccoli-dbt/models/jobs_daily_update_epic
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -37,6 +37,7 @@ blocks:
   type: dbt
   upstream_blocks: []
   uuid: animated_broccoli_dbt/models/jobs_epic_clean
+cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -49,11 +50,15 @@ executor_type: null
 extensions: {}
 name: dbt_backfill_epic
 notification_config: {}
+remote_variables_dir: null
 retry_config: {}
 run_pipeline_in_one_process: false
+settings:
+  triggers: null
 spark_config: {}
 tags: []
 type: python
-updated_at: '2023-11-23 17:59:27'
+updated_at: '2024-01-03 17:24:10'
 uuid: dbt_backfill_epic
+variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

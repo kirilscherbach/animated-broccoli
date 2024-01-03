@@ -14,7 +14,12 @@ if "test" not in globals():
 def load_data_from_postgres(*args, **kwargs):
     """ """
     execution_dt = kwargs["execution_date"].strftime("%Y-%m-%d")
-    query = f"select * from jobs_epic_daily_update where insert_date = '{execution_dt}'"
+    query = f"""
+    select * from  public.jobs_crytek_daily_update where insert_date = '{execution_dt}'
+    union all
+    select * from  public.jobs_epic_daily_update where insert_date = '{execution_dt}'
+    limit 10
+    """
     config_path = path.join(get_repo_path(), "io_config.yaml")
     config_profile = "default"
 

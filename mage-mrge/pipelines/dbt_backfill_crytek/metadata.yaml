@@ -28,12 +28,13 @@ blocks:
   language: sql
   name: animated-broccoli-dbt/models/jobs_daily_update_crytek
   retry_config: null
-  status: not_executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
   - animated_broccoli_dbt/models/jobs_crytek_clean
   uuid: animated_broccoli_dbt/models/jobs_daily_update_crytek
+cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -46,11 +47,15 @@ executor_type: null
 extensions: {}
 name: dbt_backfill_crytek
 notification_config: {}
+remote_variables_dir: null
 retry_config: {}
 run_pipeline_in_one_process: false
+settings:
+  triggers: null
 spark_config: {}
 tags: []
 type: python
-updated_at: '2023-11-23 18:53:13'
+updated_at: '2024-01-03 17:36:46'
 uuid: dbt_backfill_crytek
+variables_dir: /home/src/mage_data/mage-mrge
 widgets: []
