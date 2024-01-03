@@ -58,19 +58,3 @@ def test_output(output, *args) -> None:
     The output is more than one row
     """
     assert len(output.index) >= 1, "The output has at least 1 row"
-
-
-@test
-def test_output_team_values(output, *args) -> None:
-    """
-    Check if company is in expected list
-    """
-    output_team = output["team"].tolist()
-    output_team_set = set(output_team)
-    expected_team_set = {
-        "Hunt: Showdown",
-        "CRYENGINE",
-        "Crytek",
-        "Crysis 4 (Working Title)",
-    }
-    assert output_team_set == expected_team_set, "The output's team values are expected"

@@ -46,4 +46,11 @@ sources:
       block_uuid: export_crytek_data
       pipeline_uuid: job_digest_generator
     name: job_digest_generator_export_crytek_data
+  - description: Dataframe for block `export_chymera_data` of the `job_digest_generator`
+      mage pipeline.
+    identifier: mage_job_digest_generator_export_chymera_data
+    meta:
+      block_uuid: export_chymera_data
+      pipeline_uuid: job_digest_generator
+    name: job_digest_generator_export_chymera_data
 version: 2
