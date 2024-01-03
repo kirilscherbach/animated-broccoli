@@ -36,38 +36,19 @@ blocks:
   color: null
   configuration:
     file_path: animated-broccoli-dbt/models/jobs_crytek_clean.sql
-  downstream_blocks:
-  - animated_broccoli_dbt/models/jobs_daily_update_crytek
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
   name: animated_broccoli_dbt/models/jobs_crytek_clean
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - export_crytek_data
   uuid: animated_broccoli_dbt/models/jobs_crytek_clean
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_crytek.sql
-    limit: 1000
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: sql
-  name: animated-broccoli-dbt/models/jobs_daily_update_crytek
-  retry_config: null
-  status: not_executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - animated_broccoli_dbt/models/jobs_crytek_clean
-  uuid: animated_broccoli_dbt/models/jobs_daily_update_crytek
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -86,6 +67,6 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2023-12-02 12:26:21'
+updated_at: '2024-01-03 10:45:24'
 uuid: stalker_crytek
 widgets: []

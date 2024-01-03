@@ -13,12 +13,12 @@ blocks:
   language: python
   name: load_epic_jobs
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_epic_jobs
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
@@ -35,30 +35,11 @@ blocks:
   upstream_blocks:
   - load_epic_jobs
   uuid: export_to_postgres
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_epic.sql
-  downstream_blocks:
-  - data_inspection_epic
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: sql
-  name: animated_broccoli_dbt/models/jobs_daily_update_epic
-  retry_config: null
-  status: executed
-  timeout: null
-  type: dbt
-  upstream_blocks:
-  - animated_broccoli_dbt/models/jobs_epic_clean
-  uuid: animated_broccoli_dbt/models/jobs_daily_update_epic
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_path: animated-broccoli-dbt/models/jobs_epic_clean.sql
-  downstream_blocks:
-  - animated_broccoli_dbt/models/jobs_daily_update_epic
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -71,23 +52,6 @@ blocks:
   upstream_blocks:
   - export_to_postgres
   uuid: animated_broccoli_dbt/models/jobs_epic_clean
-- all_upstream_blocks_executed: false
-  color: null
-  configuration:
-    file_path: null
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: data_inspection_epic
-  retry_config: null
-  status: updated
-  timeout: null
-  type: data_loader
-  upstream_blocks:
-  - animated_broccoli_dbt/models/jobs_daily_update_epic
-  uuid: data_inspection_epic
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -96,7 +60,7 @@ data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
-executor_type: null
+executor_type: local_python
 extensions: {}
 name: stalker-epic
 notification_config: {}
@@ -108,12 +72,12 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2023-12-12 15:20:53'
+updated_at: '2024-01-03 11:33:48'
 uuid: stalker_epic
 variables:
   table_name: jobs_epic
 widgets:
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_style: vertical
@@ -140,7 +104,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_company
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_style: horizontal
@@ -166,7 +130,7 @@ widgets:
   upstream_blocks:
   - load_epic_jobs
   uuid: count_hits_by_department
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     chart_type: table
