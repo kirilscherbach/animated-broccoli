@@ -1,4 +1,4 @@
-{% macro calculate_daily_job_update(table_name) %}
+{% macro calculate_daily_job_update(table_name, source) %}
 
 
 with filtered_dataset as
@@ -35,7 +35,8 @@ insert_date position    insert_date position
 */
 
 select
-  coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-09") }}' update_job_id
+  '{{ source }}' as source
+  , coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-09") }}' update_job_id
   , case
         when today.job_id is null then 'Position closed'
         when yesterday.job_id is null then 'Position opened'
