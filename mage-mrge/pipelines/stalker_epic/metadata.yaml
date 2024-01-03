@@ -52,6 +52,7 @@ blocks:
   upstream_blocks:
   - export_to_postgres
   uuid: animated_broccoli_dbt/models/jobs_epic_clean
+cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -60,22 +61,24 @@ data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
-executor_type: local_python
+executor_type: null
 extensions: {}
 name: stalker-epic
 notification_config: {}
-retry_config:
-  delay: 10
-  retries: 3
+remote_variables_dir: null
+retry_config: {}
 run_pipeline_in_one_process: false
+settings:
+  triggers: null
 spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-03 11:33:48'
+updated_at: '2024-01-03T11:33:48+00:00'
 uuid: stalker_epic
 variables:
   table_name: jobs_epic
+variables_dir: /home/src/mage_data/mage-mrge
 widgets:
 - all_upstream_blocks_executed: true
   color: null

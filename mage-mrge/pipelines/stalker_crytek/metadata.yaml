@@ -49,6 +49,7 @@ blocks:
   upstream_blocks:
   - export_crytek_data
   uuid: animated_broccoli_dbt/models/jobs_crytek_clean
+cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
@@ -61,12 +62,16 @@ executor_type: null
 extensions: {}
 name: stalker_crytek
 notification_config: {}
+remote_variables_dir: null
 retry_config: {}
 run_pipeline_in_one_process: false
+settings:
+  triggers: null
 spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-03 10:45:24'
+updated_at: '2024-01-03T10:45:24+00:00'
 uuid: stalker_crytek
+variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

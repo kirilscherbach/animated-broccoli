@@ -18,7 +18,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
     schema_name = "public"
-    table_name = kwargs["table_name"]
+    table_name = "jobs_epic"
     config_path = path.join(get_repo_path(), "io_config.yaml")
     config_profile = "default"
 

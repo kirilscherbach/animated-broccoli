@@ -18,4 +18,32 @@ sources:
       block_uuid: export_crytek_data
       pipeline_uuid: stalker_crytek
     name: stalker_crytek_export_crytek_data
+  - description: Dataframe for block `export_crytek_data` of the `serene_artificer`
+      mage pipeline.
+    identifier: mage_serene_artificer_export_crytek_data
+    meta:
+      block_uuid: export_crytek_data
+      pipeline_uuid: serene_artificer
+    name: serene_artificer_export_crytek_data
+  - description: Dataframe for block `export_epic_data` of the `serene_artificer`
+      mage pipeline.
+    identifier: mage_serene_artificer_export_epic_data
+    meta:
+      block_uuid: export_epic_data
+      pipeline_uuid: serene_artificer
+    name: serene_artificer_export_epic_data
+  - description: Dataframe for block `export_epic_data` of the `job_digest_generator`
+      mage pipeline.
+    identifier: mage_job_digest_generator_export_epic_data
+    meta:
+      block_uuid: export_epic_data
+      pipeline_uuid: job_digest_generator
+    name: job_digest_generator_export_epic_data
+  - description: Dataframe for block `export_crytek_data` of the `job_digest_generator`
+      mage pipeline.
+    identifier: mage_job_digest_generator_export_crytek_data
+    meta:
+      block_uuid: export_crytek_data
+      pipeline_uuid: job_digest_generator
+    name: job_digest_generator_export_crytek_data
 version: 2
