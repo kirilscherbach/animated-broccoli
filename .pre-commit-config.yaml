@@ -32,3 +32,4 @@ repos:
     rev: 2.3.5
     hooks:
       - id: sqlfluff-fix
+        args: ["--dialect", "postgres"]
