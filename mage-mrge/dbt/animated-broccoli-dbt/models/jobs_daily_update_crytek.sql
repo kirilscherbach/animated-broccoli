@@ -10,4 +10,4 @@
   )
 }}
 
-{{ calculate_daily_job_update('jobs_crytek_clean', 'crytek') }}
+{{ calculate_daily_job_update('jobs_crytek_clean', 'Crytek') }}
