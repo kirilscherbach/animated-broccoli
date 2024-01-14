@@ -19,6 +19,22 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
+  - export_riot_jobs
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_riot_jobs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_riot_jobs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
   - export_crytek_data
   executor_config: null
   executor_type: local_python
@@ -31,6 +47,22 @@ blocks:
   type: data_loader
   upstream_blocks: []
   uuid: load_crytek_jobs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_riot_jobs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - load_riot_jobs
+  uuid: export_riot_jobs
 - all_upstream_blocks_executed: false
   color: null
   configuration: {}
@@ -282,7 +314,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-09 20:47:44'
+updated_at: '2024-01-14 12:24:46'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []
