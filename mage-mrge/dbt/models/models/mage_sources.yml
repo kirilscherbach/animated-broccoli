@@ -11,13 +11,6 @@ sources:
       block_uuid: export_epic_data
       pipeline_uuid: job_digest_generator
     name: job_digest_generator_export_epic_data
-  - description: Dataframe for block `export_riot_jobs` of the `job_digest_generator`
-      mage pipeline.
-    identifier: mage_job_digest_generator_export_riot_jobs
-    meta:
-      block_uuid: export_riot_jobs
-      pipeline_uuid: job_digest_generator
-    name: job_digest_generator_export_riot_jobs
   - description: Dataframe for block `export_crytek_data` of the `job_digest_generator`
       mage pipeline.
     identifier: mage_job_digest_generator_export_crytek_data
@@ -32,4 +25,11 @@ sources:
       block_uuid: export_chymera_data
       pipeline_uuid: job_digest_generator
     name: job_digest_generator_export_chymera_data
+  - description: Dataframe for block `export_riot_jobs` of the `job_digest_generator`
+      mage pipeline.
+    identifier: mage_job_digest_generator_export_riot_jobs
+    meta:
+      block_uuid: export_riot_jobs
+      pipeline_uuid: job_digest_generator
+    name: job_digest_generator_export_riot_jobs
 version: 2

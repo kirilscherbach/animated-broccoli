@@ -188,6 +188,7 @@ blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_epic
   - animated_broccoli_dbt/models/jobs_daily_update_crytek
   - dbt/models/jobs_chymera_daily_update
+  - dbt/models/jobs_riot_daily_update
   uuid: prepare_daily_update
 - all_upstream_blocks_executed: false
   color: null
@@ -294,8 +295,27 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration:
+    file_path: dbt/models/jobs_riot_daily_update.sql
+  downstream_blocks:
+  - prepare_daily_update
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/jobs_riot_daily_update
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/models/jobs_riot_clean
+  uuid: dbt/models/jobs_riot_daily_update
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
     file_path: dbt/models/jobs_riot_clean.sql
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt/models/jobs_riot_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -332,7 +352,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-14 13:45:31'
+updated_at: '2024-01-14 13:55:26'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []
