@@ -44,7 +44,7 @@ from
             as rn
         from {{ source('scraper_results', 'jobs_riot') }}
         {% if is_incremental() %}
-            where insert_ts > (select max(insert_ts::date) from {{ this }})
+        where insert_ts > (select max(insert_ts::date) from {{ this }})
         {% endif %}
     ) as ordered_incr
 where rn = 1

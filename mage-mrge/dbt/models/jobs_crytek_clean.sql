@@ -45,7 +45,7 @@ from
             as rn
         from {{ source('scraper_results', 'jobs_crytek') }}
         {% if is_incremental() %}
-            where insert_ts > (select max(insert_ts) from {{ this }})
+        where insert_ts > (select max(insert_ts) from {{ this }})
         {% endif %}
     ) as ordered_incr
 where rn = 1
