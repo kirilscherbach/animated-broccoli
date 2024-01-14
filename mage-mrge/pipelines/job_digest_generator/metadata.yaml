@@ -352,7 +352,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-14T14:02:25+00:00'
+updated_at: '2024-01-14 14:16:55'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

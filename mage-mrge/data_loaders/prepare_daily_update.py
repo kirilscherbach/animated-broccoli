@@ -56,6 +56,20 @@ def load_data_from_postgres(*args, **kwargs):
         "job_location",
         "insert_date"
     from  public.jobs_chymera_daily_update where insert_date = '{execution_dt}'
+    union all
+    select
+        "source",
+        "update_job_id",
+        "job_status",
+        "job_id"::text,
+        "absolute_url",
+        "title",
+        "department",
+        "company",
+        "remote"::text,
+        "job_location",
+        "insert_date"
+    from  public.jobs_riot_daily_update where insert_date = '{execution_dt}'
     """
     config_path = path.join(get_repo_path(), "io_config.yaml")
     config_profile = "default"

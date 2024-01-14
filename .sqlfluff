@@ -12,4 +12,4 @@ unwrap_wrapped_queries = True
 
 [sqlfluff:templater:jinja]
 apply_dbt_builtins = True
-load_macros_from_path = mage-mrge/dbt/macros
+load_macros_from_path = mage-mrge/dbt/animated-broccoli-dbt/macros
