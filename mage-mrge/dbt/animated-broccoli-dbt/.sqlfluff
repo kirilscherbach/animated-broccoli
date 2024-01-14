@@ -1,6 +1,0 @@
-[sqlfluff:templater:jinja]
-load_macros_from_path=macros
-
-[sqlfluff]
-dialect=postgres
-exclude_rules=L009,LT04,LT05

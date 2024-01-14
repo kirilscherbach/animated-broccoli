@@ -50,7 +50,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt/models/jobs_riot_clean
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -100,14 +101,14 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_crytek_clean.sql
+    file_path: dbt/models/jobs_crytek_clean.sql
   downstream_blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_crytek
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_crytek_clean
+  name: dbt/models/jobs_crytek_clean
   retry_config: null
   status: failed
   timeout: null
@@ -118,14 +119,14 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_epic_clean.sql
+    file_path: dbt/models/jobs_epic_clean.sql
   downstream_blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_epic
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_epic_clean
+  name: dbt/models/jobs_epic_clean
   retry_config: null
   status: not_executed
   timeout: null
@@ -136,14 +137,14 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_crytek.sql
+    file_path: dbt/models/jobs_daily_update_crytek.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_daily_update_crytek
+  name: dbt/models/jobs_daily_update_crytek
   retry_config: null
   status: updated
   timeout: null
@@ -154,14 +155,14 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_epic.sql
+    file_path: dbt/models/jobs_daily_update_epic.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_daily_update_epic
+  name: dbt/models/jobs_daily_update_epic
   retry_config: null
   status: updated
   timeout: null
@@ -186,7 +187,7 @@ blocks:
   upstream_blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_epic
   - animated_broccoli_dbt/models/jobs_daily_update_crytek
-  - animated-broccoli-dbt/models/jobs_chymera_daily_update
+  - dbt/models/jobs_chymera_daily_update
   uuid: prepare_daily_update
 - all_upstream_blocks_executed: false
   color: null
@@ -224,39 +225,39 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_chymera_clean.sql
+    file_path: dbt/models/jobs_chymera_clean.sql
   downstream_blocks:
-  - animated-broccoli-dbt/models/jobs_chymera_daily_update
+  - dbt/models/jobs_chymera_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_chymera_clean
+  name: dbt/models/jobs_chymera_clean
   retry_config: null
   status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - export_chymera_data
-  uuid: animated-broccoli-dbt/models/jobs_chymera_clean
+  uuid: dbt/models/jobs_chymera_clean
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_chymera_daily_update.sql
+    file_path: dbt/models/jobs_chymera_daily_update.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: sql
-  name: animated-broccoli-dbt/models/jobs_chymera_daily_update
+  name: dbt/models/jobs_chymera_daily_update
   retry_config: null
   status: not_executed
   timeout: null
   type: dbt
   upstream_blocks:
-  - animated-broccoli-dbt/models/jobs_chymera_clean
-  uuid: animated-broccoli-dbt/models/jobs_chymera_daily_update
+  - dbt/models/jobs_chymera_clean
+  uuid: dbt/models/jobs_chymera_daily_update
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -277,7 +278,7 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - animated-broccoli-dbt/models/jobs_chymera_clean
+  - dbt/models/jobs_chymera_clean
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -290,6 +291,23 @@ blocks:
   upstream_blocks:
   - load_chymera_jobs
   uuid: export_chymera_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: dbt/models/jobs_riot_clean.sql
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/models/jobs_riot_clean
+  retry_config: null
+  status: updated
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - export_riot_jobs
+  uuid: dbt/models/jobs_riot_clean
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -314,7 +332,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-14 12:24:46'
+updated_at: '2024-01-14 13:05:06'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

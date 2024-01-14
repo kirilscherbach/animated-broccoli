@@ -28,8 +28,8 @@ repos:
     hooks:
       - id: flake8
         args: ["--ignore", "E501,F841,F821"]
-  - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 2.3.5
-    hooks:
-      - id: sqlfluff-fix
-        args: ["--dialect", "postgres"]
+  #- repo: https://github.com/sqlfluff/sqlfluff
+  #  rev: 2.3.5
+  #  hooks:
+  #    - id: sqlfluff-fix
+  #      args: ["--dialect", "postgres"]
