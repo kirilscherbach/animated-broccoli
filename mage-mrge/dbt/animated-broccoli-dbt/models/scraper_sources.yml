@@ -8,3 +8,4 @@ sources:
       - name: jobs_epic
       - name: jobs_crytek
       - name: jobs_chymera
+      - name: jobs_riot
