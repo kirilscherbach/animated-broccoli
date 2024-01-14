@@ -188,6 +188,7 @@ blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_epic
   - animated_broccoli_dbt/models/jobs_daily_update_crytek
   - animated-broccoli-dbt/models/jobs_chymera_daily_update
+  - animated-broccoli-dbt/models/jobs_riot_daily_update
   uuid: prepare_daily_update
 - all_upstream_blocks_executed: false
   color: null
@@ -313,7 +314,8 @@ blocks:
   color: null
   configuration:
     file_path: animated-broccoli-dbt/models/jobs_riot_daily_update.sql
-  downstream_blocks: []
+  downstream_blocks:
+  - prepare_daily_update
   executor_config: null
   executor_type: local_python
   has_callback: false
