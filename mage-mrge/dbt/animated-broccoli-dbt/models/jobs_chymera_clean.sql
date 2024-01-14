@@ -12,32 +12,32 @@
 }}
 
 select
-    daily_job_id,
-    absolute_url,
-    job_id,
-    title,
-    department,
-    company,
-    remote,
-    job_location,
-    updated_at,
-    insert_ts,
-    insert_date
+    daily_job_id
+    , absolute_url
+    , job_id
+    , title
+    , department
+    , company
+    , remote
+    , job_location
+    , updated_at
+    , insert_ts
+    , insert_date
 from
     (
         select
-            url as absolute_url,
-            job_id as job_id,
-            job_title as title,
-            department,
-            subcompany as company,
-            office as job_location,
-            insert_ts::date as updated_at,
-            insert_ts,
-            insert_ts::date as insert_date,
-            concat(job_id, '-', insert_ts::date) as daily_job_id,
-            coalesce(lower(office) like '%remote%', 'false') as remote,
-            row_number() over (partition by concat(job_id, '-', insert_ts::date) order by insert_ts desc) as rn
+            url as absolute_url
+            , job_id as job_id
+            , job_title as title
+            , department
+            , subcompany as company
+            , office as job_location
+            , insert_ts::date as updated_at
+            , insert_ts
+            , insert_ts::date as insert_date
+            , concat(job_id, '-', insert_ts::date) as daily_job_id
+            , coalesce(lower(office) like '%remote%', 'false') as remote
+            , row_number() over (partition by concat(job_id, '-', insert_ts::date) order by insert_ts desc) as rn
         from {{ source('scraper_results', 'jobs_chymera') }}
         {% if is_incremental() %}
         -- this filter will only be applied on an incremental run
