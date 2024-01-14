@@ -20,7 +20,6 @@ select
     , company
     , remote
     , job_location
-    , updated_at
     , insert_ts
     , insert_date
 from
