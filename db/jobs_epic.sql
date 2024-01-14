@@ -26,6 +26,4 @@ create index insert_ts_btree_epic on jobs_epic using btree
     insert_ts
 );
 
-grant all on public.jobs_epic to scraper;
-grant all on public.jobs_epic to dbt_user;
 grant all on sequence jobs_epic_new_id_seq to scraper;

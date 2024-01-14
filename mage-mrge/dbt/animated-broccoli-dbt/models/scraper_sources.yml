@@ -9,3 +9,4 @@ sources:
       - name: jobs_crytek
       - name: jobs_chymera
       - name: jobs_riot
+      - name: jobs_ea

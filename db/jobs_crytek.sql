@@ -24,6 +24,4 @@ create index insert_ts_btree_crytek on jobs_crytek using btree
     insert_ts
 );
 
-grant all on public.jobs_crytek to scraper;
-grant all on public.jobs_crytek to dbt_user;
 grant all on sequence jobs_crytek_new_id_seq to scraper;
