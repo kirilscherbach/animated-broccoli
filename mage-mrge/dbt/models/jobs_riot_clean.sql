@@ -36,15 +36,12 @@ from
             insert_ts::date as insert_date,
             concat(job_id, '-', insert_ts::date) as daily_job_id,
             coalesce(lower(job_location) like '%remote%', 'false') as remote,
-            row_number()
-                over (
-                    partition by concat(job_id, '-', insert_ts::date)
-                    order by insert_ts desc
-                )
-            as rn
+            row_number() over (partition by concat(job_id, '-', insert_ts::date) order by insert_ts desc) as rn
         from {{ source('scraper_results', 'jobs_riot') }}
         {% if is_incremental() %}
-        where insert_ts > (select max(insert_ts::date) from {{ this }})
+        -- this filter will only be applied on an incremental run
+        -- (uses > to include records whose timestamp occurred since the last run of this model)
+        where insert_ts > (select coalesce(max(insert_ts::date), '2020-01-01'::date) from {{ this }})
         {% endif %}
     ) as ordered_incr
 where rn = 1

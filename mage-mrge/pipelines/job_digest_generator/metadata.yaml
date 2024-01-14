@@ -110,7 +110,7 @@ blocks:
   language: sql
   name: dbt/models/jobs_crytek_clean
   retry_config: null
-  status: failed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -128,7 +128,7 @@ blocks:
   language: sql
   name: dbt/models/jobs_epic_clean
   retry_config: null
-  status: not_executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -234,7 +234,7 @@ blocks:
   language: sql
   name: dbt/models/jobs_chymera_clean
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -302,7 +302,7 @@ blocks:
   language: sql
   name: dbt/models/jobs_riot_clean
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
@@ -332,7 +332,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-14 13:05:06'
+updated_at: '2024-01-14 13:45:31'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

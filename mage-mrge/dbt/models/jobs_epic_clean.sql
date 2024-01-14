@@ -41,14 +41,11 @@ from
             insert_ts,
             insert_ts::date as insert_date,
             concat(requisition_id, '-', insert_ts::date) as daily_job_id,
-            row_number()
-                over (
-                    partition by concat(requisition_id, '-', insert_ts::date)
-                    order by insert_ts desc
-                )
-            as rn
+            row_number() over (partition by concat(requisition_id, '-', insert_ts::date) order by insert_ts desc) as rn
         from {{ source('scraper_results', 'jobs_epic') }}
         {% if is_incremental() %}
+        -- this filter will only be applied on an incremental run
+        -- (uses > to include records whose timestamp occurred since the last run of this model)
         where insert_ts > (select max(insert_ts) from {{ this }})
         {% endif %}
     ) as ordered_incr
