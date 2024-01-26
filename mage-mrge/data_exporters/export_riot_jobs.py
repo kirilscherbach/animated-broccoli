@@ -21,12 +21,14 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     table_name = "jobs_riot"
     config_path = path.join(get_repo_path(), "io_config.yaml")
     config_profile = "default"
-
-    with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            schema_name,
-            table_name,
-            index=False,
-            if_exists="append",
-        )
+    if not df.empty:
+        with Postgres.with_config(
+            ConfigFileLoader(config_path, config_profile)
+        ) as loader:
+            loader.export(
+                df,
+                schema_name,
+                table_name,
+                index=False,
+                if_exists="append",
+            )

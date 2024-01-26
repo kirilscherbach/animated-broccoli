@@ -304,12 +304,12 @@ blocks:
   language: python
   name: load_chymera_jobs
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_chymera_jobs
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
@@ -424,7 +424,7 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-14 20:31:31'
+updated_at: '2024-01-23 13:03:10'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []
