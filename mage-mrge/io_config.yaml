@@ -14,7 +14,7 @@ default:
   AZURE_TENANT_ID: "{{ env_var('AZURE_TENANT_ID') }}"
   # Clickhouse
   CLICKHOUSE_DATABASE: default
-  CLICKHOUSE_HOST: host.docker.internal
+  CLICKHOUSE_HOST: 192.168.2.131
   CLICKHOUSE_INTERFACE: http
   CLICKHOUSE_PASSWORD: null
   CLICKHOUSE_PORT: 8123
@@ -78,7 +78,7 @@ default:
   POSTGRES_SCHEMA: public # Optional
   POSTGRES_USER: scraper
   POSTGRES_PASSWORD: "{{ env_var('SCRAPER_PG_PASSWORD') }}"
-  POSTGRES_HOST: host.docker.internal
+  POSTGRES_HOST: 192.168.2.131
   POSTGRES_PORT: 5432
   # Redshift
   REDSHIFT_SCHEMA: public # Optional
@@ -123,5 +123,5 @@ reader:
   POSTGRES_SCHEMA: public # Optional
   POSTGRES_USER: dbt_user
   POSTGRES_PASSWORD: "{{ env_var('DBT_PG_PASSWORD') }}"
-  POSTGRES_HOST: host.docker.internal
+  POSTGRES_HOST: 192.168.2.131
   POSTGRES_PORT: 5432
