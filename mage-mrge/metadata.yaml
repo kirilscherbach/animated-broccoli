@@ -57,3 +57,7 @@ features:
   add_new_block_v2: true
   compute_management: false
   display_local_timezone: true
+  dbt_v2: true
+  operation_history: true
+  project_platform: false
+pipelines:
