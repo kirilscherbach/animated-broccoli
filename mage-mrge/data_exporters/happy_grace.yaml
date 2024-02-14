@@ -1,6 +1,6 @@
 config:
   database: scraper_db
-  host: host.docker.internal
+  host: 192.168.2.131
   password: "{{ env_var('SCRAPER_PG_PASSWORD') }}"
   port: 5432
   schema: public

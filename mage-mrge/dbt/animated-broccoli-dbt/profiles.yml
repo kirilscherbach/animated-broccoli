@@ -3,7 +3,7 @@ broccoli-mage:
   outputs:
     dev:
       type: postgres
-      host: host.docker.internal
+      host: 192.168.2.131
       user: dbt_user
       password: "{{ env_var('DBT_PG_PASSWORD') }}"
       port: 5432
