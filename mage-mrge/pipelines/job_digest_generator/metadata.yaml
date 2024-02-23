@@ -75,7 +75,7 @@ blocks:
   language: python
   name: load_crytek_jobs
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
@@ -114,7 +114,7 @@ blocks:
   upstream_blocks:
   - load_epic_jobs
   uuid: export_epic_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
@@ -125,16 +125,16 @@ blocks:
   language: python
   name: export_crytek_data
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
   - load_crytek_jobs
   uuid: export_crytek_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_crytek_clean.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_crytek_clean.sql
   downstream_blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_crytek
   executor_config: null
@@ -152,7 +152,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_epic_clean.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_epic_clean.sql
   downstream_blocks:
   - animated_broccoli_dbt/models/jobs_daily_update_epic
   executor_config: null
@@ -170,7 +170,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_crytek.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_daily_update_crytek.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
@@ -188,7 +188,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_daily_update_epic.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_daily_update_epic.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
@@ -260,7 +260,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_chymera_clean.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_chymera_clean.sql
   downstream_blocks:
   - animated-broccoli-dbt/models/jobs_chymera_daily_update
   executor_config: null
@@ -278,7 +278,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_chymera_daily_update.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_chymera_daily_update.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
@@ -329,7 +329,7 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_riot_clean.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_riot_clean.sql
   downstream_blocks:
   - animated-broccoli-dbt/models/jobs_riot_daily_update
   executor_config: null
@@ -338,7 +338,7 @@ blocks:
   language: sql
   name: animated-broccoli-dbt/models/jobs_riot_clean
   retry_config: null
-  status: not_executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -347,7 +347,7 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration:
-    file_path: animated-broccoli-dbt/models/jobs_riot_daily_update.sql
+    file_path: dbt/animated-broccoli-dbt/models/jobs_riot_daily_update.sql
   downstream_blocks:
   - prepare_daily_update
   executor_config: null
@@ -356,13 +356,13 @@ blocks:
   language: sql
   name: animated-broccoli-dbt/models/jobs_riot_daily_update
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - animated-broccoli-dbt/models/jobs_riot_clean
   uuid: animated-broccoli-dbt/models/jobs_riot_daily_update
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_path: dbt/animated-broccoli-dbt/models/jobs_ea_daily_update.sql
@@ -394,7 +394,7 @@ blocks:
   language: sql
   name: dbt/animated_broccoli_dbt/models/jobs_ea_clean
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
@@ -409,14 +409,12 @@ data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
-executor_type: local_python
+executor_type: null
 extensions: {}
 name: Job Digest Generator
 notification_config: {}
 remote_variables_dir: null
-retry_config:
-  delay: 3600
-  retries: 2
+retry_config: {}
 run_pipeline_in_one_process: false
 settings:
   triggers: null
@@ -424,7 +422,6 @@ spark_config: {}
 tags:
 - project stalker
 type: python
-updated_at: '2024-01-23 13:03:10'
 uuid: job_digest_generator
 variables_dir: /home/src/mage_data/mage-mrge
 widgets: []

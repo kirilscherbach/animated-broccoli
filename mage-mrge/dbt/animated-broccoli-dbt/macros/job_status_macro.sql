@@ -36,7 +36,7 @@ insert_date position    insert_date position
 
 select
   '{{ source }}' as source
-  , coalesce(today.job_id, yesterday.job_id)||'{{ var("execution_date", "2023-11-09") }}' update_job_id
+  , coalesce(today.job_id, yesterday.job_id)||to_char('{{ var("execution_date", "2023-11-09") }}'::date, 'YYYY-MM-DD') update_job_id
   , case
         when today.job_id is null then 'Position closed'
         when yesterday.job_id is null then 'Position opened'

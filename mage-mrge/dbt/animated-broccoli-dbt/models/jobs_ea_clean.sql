@@ -38,7 +38,7 @@ from
             , row_number() over (partition by concat(job_id, '-', insert_ts::date) order by insert_ts desc) as rn
         from {{ source('scraper_results', 'jobs_ea') }}
         {% if is_incremental() %}
-        where insert_ts > (select max(insert_ts) from {{ this }})
+        where insert_ts > (select coalesce(max(insert_ts), '2020-01-01T00:00:00.000000') from {{ this }})
         {% endif %}
     ) as ordered_incr
 where rn = 1

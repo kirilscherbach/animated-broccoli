@@ -60,4 +60,5 @@ features:
   dbt_v2: true
   operation_history: true
   project_platform: false
+  command_center: true
 pipelines:

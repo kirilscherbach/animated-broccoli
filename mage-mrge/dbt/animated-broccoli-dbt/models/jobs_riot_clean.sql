@@ -40,7 +40,7 @@ from
         {% if is_incremental() %}
         -- this filter will only be applied on an incremental run
         -- (uses > to include records whose timestamp occurred since the last run of this model)
-        where insert_ts > (select max(insert_ts) from {{ this }})
+        where insert_ts > (select coalesce(max(insert_ts), '2020-01-01T00:00:00.000000') from {{ this }})
         {% endif %}
     ) as ordered_incr
 where rn = 1

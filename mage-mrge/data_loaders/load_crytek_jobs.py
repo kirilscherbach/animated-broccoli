@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 
 import pandas as pd
@@ -9,19 +10,39 @@ if "test" not in globals():
     from mage_ai.data_preparation.decorators import test
 
 
+def get_jobs(base_url):
+    r = requests.get(base_url)
+    rd = r.json()
+    return rd["postings"]
+
+
 @data_loader
 def load_data_from_api(*args, **kwargs):
     """
     Template for loading data from API
     """
     logger = kwargs.get("logger")
+    base_url = "https://www.crytek.com/api/v1/lever-postings"
     i = 0
     dl = []
-    base_url = "https://www.crytek.com/api/v1/lever-postings"
-    logger.info(f"Requesting {base_url}")
-    r = requests.get(base_url)
-    rd = r.json()
-    jobs = rd["postings"]
+    old_count = -1
+    new_count = -1
+    # the API sometimes returns less values while a subsequent request returns more
+    # wait ten seconds and check if the return count "stabilizes"
+    while True:
+        logger.info(f"Requesting {base_url}")
+        jobs = get_jobs(base_url)
+        new_count = len(jobs)
+        if new_count == old_count:
+            logger.info(f"The count of jobs stabilized at {new_count}")
+            break
+        else:
+            logger.info(
+                f"The old count is {old_count}, while new is {new_count}. Keep trying after 10s"
+            )
+            old_count = new_count
+            time.sleep(10)
+
     position_count = len(jobs)
     for job in jobs:
         url = f"""{base_url}/{job["alias"]}"""
