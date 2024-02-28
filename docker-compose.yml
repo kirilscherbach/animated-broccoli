@@ -25,4 +25,5 @@ services:
       - 6789:6789
     volumes:
       - .:/home/src/
+      - /home/kiril/pgbackup:/home/pgbackup
     restart: on-failure:5
