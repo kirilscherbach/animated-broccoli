@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 
 if "custom" not in globals():
     from mage_ai.data_preparation.decorators import custom
@@ -8,19 +7,18 @@ if "test" not in globals():
 
 
 @custom
-def get_backup_modified_date(*args, **kwargs):
+def get_backup_properties(*args, **kwargs):
     """
-    Get time when file was last modified
+    Get the file size
     """
     backup_file = "/home/pgbackup/dbdump.gz"
-    object_name = os.path.basename(backup_file)
-    ts = os.path.getmtime(backup_file)
-    return datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d")
+    file_stats = os.stat(backup_file)
+    return file_stats.st_size / (1024 * 1024)
 
 
 @test
-def test_backup_is_updated(output, *args) -> None:
+def test_backup_file_size_is_adequate(output, *args) -> None:
     """
     Template code for testing the output of the block.
     """
-    assert output == datetime.now().strftime("%Y-%m-%d"), "The backup is outdated!"
+    assert output >= 73, "The backup file is smaller than expected!"
