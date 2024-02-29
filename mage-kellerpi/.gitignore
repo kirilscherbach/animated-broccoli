@@ -7,8 +7,10 @@
 .preferences.yaml
 .variables/
 __pycache__/
+*/__pycache__/
 docker-compose.override.yml
 logs/
 mage-ai.db
 mage_data/
 secrets/
+*.pyc
