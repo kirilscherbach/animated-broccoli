@@ -50,8 +50,9 @@ run_pipeline_in_one_process: false
 settings:
   triggers: null
 spark_config: {}
-tags: []
+tags:
+- demo
 type: streaming
 uuid: delightful_meadow
-variables_dir: /home/src/mage_data/mage-mrge
+variables_dir: /home/src/mage_data/mage-kellerpi
 widgets: []
