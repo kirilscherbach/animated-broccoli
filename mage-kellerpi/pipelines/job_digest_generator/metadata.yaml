@@ -10,7 +10,7 @@ blocks:
   language: python
   name: load_epic_jobs
   retry_config: null
-  status: not_executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
@@ -423,5 +423,5 @@ tags:
 - project stalker
 type: python
 uuid: job_digest_generator
-variables_dir: /home/src/mage_data/mage-mrge
+variables_dir: /home/src/mage_data/mage-kellerpi
 widgets: []

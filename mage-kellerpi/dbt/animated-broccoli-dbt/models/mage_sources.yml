@@ -67,4 +67,11 @@ sources:
       block_uuid: export_ea_jobs
       pipeline_uuid: job_digest_generator
     name: job_digest_generator_export_ea_jobs
+  - description: Dataframe for block `resolute_enchanter` of the `white_forest` mage
+      pipeline.
+    identifier: mage_white_forest_resolute_enchanter
+    meta:
+      block_uuid: resolute_enchanter
+      pipeline_uuid: white_forest
+    name: white_forest_resolute_enchanter
 version: 2

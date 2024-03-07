@@ -1,4 +1,5 @@
 import os
+import time
 
 if "custom" not in globals():
     from mage_ai.data_preparation.decorators import custom
@@ -11,6 +12,7 @@ def get_backup_properties(*args, **kwargs):
     """
     Get the file size
     """
+    time.sleep(300)
     backup_file = "/home/pgbackup/dbdump.gz"
     file_stats = os.stat(backup_file)
     return file_stats.st_size / (1024 * 1024)

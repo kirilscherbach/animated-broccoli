@@ -51,7 +51,7 @@ def load_data_from_api(*args, **kwargs):
             data_dict = {
                 "absolute_url": rd_position.get("absolute_url", "N/A"),
                 "education": rd_position.get("education", "N/A"),
-                "internal_job_id": rd_position.get("internal_job_id", "N/A"),
+                "internal_job_id": rd_position.get("internal_job_id", "-1"),
                 "requisition_id": rd_position.get("requisition_id", "N/A"),
                 "title": rd_position.get("title", "N/A"),
                 "content": rd_position.get("content", "N/A"),

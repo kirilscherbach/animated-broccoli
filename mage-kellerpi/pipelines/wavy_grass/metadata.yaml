@@ -1,0 +1,66 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - bar_chart_for_mystic_pine_1709319599424
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: mystic pine
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: mystic_pine
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-03-01 18:58:09.626453+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: wavy grass
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: wavy_grass
+variables_dir: /home/src/mage_data/mage-kellerpi
+widgets:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    chart_style: vertical
+    chart_type: bar chart
+    group_by:
+    - ambience
+    metrics:
+    - aggregation: sum
+      column: revenue
+    x: x
+    y: y
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: bar chart for mystic_pine 1709319599424
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - mystic_pine
+  uuid: bar_chart_for_mystic_pine_1709319599424
