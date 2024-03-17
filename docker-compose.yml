@@ -1,5 +1,15 @@
 version: '3'
 services:
+  postgres:
+    image: postgres:16.2-bullseye
+    ports:
+      - 5432:5432
+    volumes:
+      - /opt/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${KS_PG_PASSWORD}
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
   magic:
     image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
@@ -8,6 +18,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - postgres
     environment:
       USER_CODE_PATH: /home/src/${PROJECT_NAME}
       ENV: ${ENV}
@@ -27,13 +39,3 @@ services:
       - .:/home/src/
       - /home/kiril/pgbackup:/home/pgbackup
     restart: on-failure:5
-  postgres:
-    image: postgres:16.2-bullseye
-    ports:
-      - 5432:5432
-    volumes:
-      - /opt/pgdata:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=${KS_PG_PASSWORD}
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
