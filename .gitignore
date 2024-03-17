@@ -175,6 +175,7 @@ mage-ai.db
 mage_data/
 secrets/
 .python-version
+mage-kellerpi/.profiles*
 
 #dbt
 mage-mrge/dbt/animated-broccoli-dbt/.user.yml
