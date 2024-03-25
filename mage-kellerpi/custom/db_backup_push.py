@@ -23,7 +23,7 @@ def upload_backup(*args, **kwargs):
         region_name="eu-central-1",
     )
 
-    backup_file = "/home/pgbackup/dbdump.gz"
+    backup_file = kwargs["backup_file"]
     object_name = os.path.basename(backup_file)
     client.upload_file(backup_file, S3_BACKUP_BUCKET, object_name)
 

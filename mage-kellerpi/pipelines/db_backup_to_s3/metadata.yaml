@@ -3,39 +3,23 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - check_backup
+  - check_backup_date
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: energetic lake
-  retry_config: null
-  status: updated
-  timeout: null
-  type: sensor
-  upstream_blocks: []
-  uuid: energetic_lake
-- all_upstream_blocks_executed: false
-  color: null
-  configuration: {}
-  downstream_blocks:
-  - db_backup_push
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: check backup
+  name: trigger backup
   retry_config: null
   status: updated
   timeout: null
   type: custom
-  upstream_blocks:
-  - energetic_lake
-  uuid: check_backup
+  upstream_blocks: []
+  uuid: trigger_backup
 - all_upstream_blocks_executed: false
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - cleanup
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -46,8 +30,64 @@ blocks:
   timeout: null
   type: custom
   upstream_blocks:
-  - check_backup
+  - check_backup_size
   uuid: db_backup_push
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/check_backup_size.py
+  downstream_blocks:
+  - db_backup_push
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_backup_size
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - check_backup_date
+  uuid: check_backup_size
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/check_backup_date.py
+  downstream_blocks:
+  - check_backup_size
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_backup_date
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - trigger_backup
+  uuid: check_backup_date
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/cleanup.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: cleanup
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - db_backup_push
+  uuid: cleanup
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -74,5 +114,7 @@ tags:
 - admin_tasks
 type: python
 uuid: db_backup_to_s3
+variables:
+  backup_file: dbdump.gz
 variables_dir: /home/src/mage_data/mage-kellerpi
 widgets: []

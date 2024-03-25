@@ -10,7 +10,7 @@ def check_condition(*args, **kwargs) -> bool:
     """
     Check backup dump is updated
     """
-    backup_file = "/home/pgbackup/dbdump.gz"
+    backup_file = kwargs["backup_file"]
     object_name = os.path.basename(backup_file)
     update_date = datetime.utcfromtimestamp(os.path.getmtime(backup_file)).strftime(
         "%Y-%m-%d"
