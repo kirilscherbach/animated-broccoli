@@ -10,6 +10,7 @@ services:
       - POSTGRES_PASSWORD=${KS_PG_PASSWORD}
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
+    restart: unless-stopped
   magic:
     image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
@@ -37,4 +38,4 @@ services:
       - 6789:6789
     volumes:
       - .:/home/src/
-    restart: on-failure:5
+    restart: unless-stopped
